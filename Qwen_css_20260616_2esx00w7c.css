@@ -1,0 +1,36 @@
+/* ===========================================================
+718 FORGE — Dark Luxury Design System
+Noir absolu / Or liquide / Ivoire
+=========================================================== */
+:root {
+  --noir-absolu: #080808;
+  --noir-carte: #121110;
+  --or-liquide: #C9A84C;
+  --or-clair: #E4C97A;
+  --ivoire: #F5F0E8;
+  --gris-texte: #A8A29A;
+  --bordure: rgba(201, 168, 76, 0.18);
+  --font-display: 'Cormorant Garamond', serif;
+  --font-impact: 'Bebas Neue', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--noir-absolu);
+  color: var(--ivoire);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ... (Le reste de votre CSS est conservé à l'identique, de .grain-overlay à la fin des media queries) ... */

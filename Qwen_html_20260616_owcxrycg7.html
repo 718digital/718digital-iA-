@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>718 Forge — Générateur de sites par IA | 718Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="grain-overlay"></div>
+  
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-mark">718</span>
+        <span class="brand-name">FORGE</span>
+      </div>
+      <div class="brand-tagline">Pas de hasard. Que de la stratégie.</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">718Digital · Atelier de création assistée par IA</div>
+        <h1 class="hero-title">Décrivez votre site.<br>Il prend forme <span class="gold-italic">sous vos yeux.</span></h1>
+        <p class="hero-subtitle">718 Forge transforme un brief en une landing page complète — HTML, CSS, responsive — générée par l'IA Mistral en moins d'une minute.</p>
+        <a href="#atelier" class="cta-link">Commencer la génération <span class="cta-arrow">→</span></a>
+      </div>
+    </section>
+
+    <section id="atelier" class="atelier">
+      <div class="atelier-inner">
+        <span class="section-label">L'atelier</span>
+        <div class="atelier-intro">
+          <h2>Calibrez votre brief</h2>
+          <p>Plus les indications sont précises, plus le résultat sera fidèle à votre vision. Le champ libre permet d'affiner ce que le formulaire ne couvre pas.</p>
+        </div>
+
+        <form id="generator-form" class="form-grid">
+          <div class="field">
+            <label for="siteName">Nom du site / de la marque</label>
+            <input type="text" id="siteName" name="siteName" placeholder="Ex: Lumière Studio" required>
+          </div>
+          <div class="field">
+            <label for="sector">Secteur d'activité</label>
+            <input type="text" id="sector" name="sector" placeholder="Ex: Architecture d'intérieur">
+          </div>
+          
+          <div class="field">
+            <label for="primaryColor">Couleur principale</label>
+            <div class="color-field">
+              <input type="color" id="primaryColorPicker" value="#C9A84C">
+              <input type="text" id="primaryColor" name="primaryColor" value="#C9A84C">
+            </div>
+          </div>
+          <div class="field">
+            <label for="secondaryColor">Couleur secondaire</label>
+            <div class="color-field">
+              <input type="color" id="secondaryColorPicker" value="#080808">
+              <input type="text" id="secondaryColor" name="secondaryColor" value="#080808">
+            </div>
+          </div>
+
+          <div class="field field-full">
+            <label for="tone">Ton / ambiance</label>
+            <select id="tone" name="tone">
+              <option value="">— Sélectionner —</option>
+              <option value="Luxueux et sobre">Luxueux et sobre</option>
+              <option value="Chaleureux et festif">Chaleureux et festif</option>
+              <option value="Moderne et minimaliste">Moderne et minimaliste</option>
+              <option value="Énergique et coloré">Énergique et coloré</option>
+              <option value="Institutionnel et rassurant">Institutionnel et rassurant</option>
+              <option value="Audacieux et créatif">Audacieux et créatif</option>
+            </select>
+          </div>
+
+          <div class="field field-full">
+            <label>Sections à inclure</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-pill"><input type="checkbox" name="sections" value="À propos"><span>À propos</span></label>
+              <label class="checkbox-pill"><input type="checkbox" name="sections" value="Services"><span>Services</span></label>
+              <label class="checkbox-pill"><input type="checkbox" name="sections" value="Galerie"><span>Galerie</span></label>
+              <label class="checkbox-pill"><input type="checkbox" name="sections" value="Témoignages"><span>Témoignages</span></label>
+              <label class="checkbox-pill"><input type="checkbox" name="sections" value="Tarifs"><span>Tarifs</span></label>
+              <label class="checkbox-pill"><input type="checkbox" name="sections" value="FAQ"><span>FAQ</span></label>
+              <label class="checkbox-pill"><input type="checkbox" name="sections" value="Contact"><span>Contact</span></label>
+            </div>
+          </div>
+
+          <div class="field field-full">
+            <label for="freeText">Description libre <span class="optional">(facultatif, mais recommandé)</span></label>
+            <textarea id="freeText" name="freeText" placeholder="Décrivez votre vision, vos contraintes spécifiques, ou le message clé à transmettre..."></textarea>
+          </div>
+
+          <div class="field field-full">
+            <button type="submit" id="generate-btn" class="generate-btn">Générer le site</button>
+          </div>
+        </form>
+
+        <div id="error-box" class="error-box" hidden></div>
+
+        <div id="loading-box" class="loading-box" hidden>
+          <div class="loading-spinner"></div>
+          <div id="loading-text">Mistral façonne votre site...</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="result-section" class="result-section" hidden>
+      <div class="result-inner">
+        <div class="result-header">
+          <div>
+            <span class="section-label">Résultat</span>
+            <h2>Votre site est prêt</h2>
+          </div>
+          <div class="result-actions">
+            <button id="copy-btn" class="action-btn">Copier le code</button>
+            <button id="download-btn" class="action-btn action-btn-gold">Télécharger le .zip</button>
+          </div>
+        </div>
+        <div class="preview-frame-wrapper">
+          <iframe id="preview-frame" title="Aperçu du site généré"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    718 Forge — un outil 718Digital · Abidjan, Côte d'Ivoire
+  </footer>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="script.js"></script>
+</body>
+</html>
